@@ -1,6 +1,6 @@
-languages
-upgrade
-uploads
+languages/
+upgrade/
+uploads/
 index.php
 .DS_Store
 

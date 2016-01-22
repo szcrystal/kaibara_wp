@@ -699,7 +699,7 @@ function isNameAdmin() {
 
 //localServer judge
 function isLocal() {
-    return ($_SERVER['SERVER_NAME'] == '192.168.10.17');
+    return ($_SERVER['SERVER_NAME'] == '192.168.10.17' || $_SERVER['SERVER_NAME'] == 'localhost');
 }
 
 function session_clear_onpage() {
@@ -782,7 +782,8 @@ function getLog() {
     //$accessFile = $_SERVER['SCRIPT_FILENAME'];
     
     $accessPage = urldecode($_SERVER['REQUEST_URI']);
-    $referer = urldecode($_SERVER['HTTP_REFERER']);
+    $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+    $referer = urldecode($referer);
     $agent = $_SERVER['HTTP_USER_AGENT'];
     
     $ip = $_SERVER['REMOTE_ADDR'];
