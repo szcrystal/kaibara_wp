@@ -6,6 +6,7 @@ index.php
 
 themes/
 !themes/_kbr
+themes/_kbr/logs/
 
 plugins/
 !plugins/sz-form

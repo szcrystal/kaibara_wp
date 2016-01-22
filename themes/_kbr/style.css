@@ -544,9 +544,7 @@ button[type="submit"] {
     left: 6px;
     font-size: 1.2em;
 }
-/*--------------------------------------------------------------
-# Navigation
---------------------------------------------------------------*/
+
 /*--------------------------------------------------------------
 ## Links
 --------------------------------------------------------------*/
@@ -1027,7 +1025,7 @@ h1.entry-title {
 	width: 100%;
 }
 .entry-footer {
-	margin-top: 2em;
+	margin-top: 2.5em;
 }
 .entry-footer span {
 	margin-right: 1.1em;
@@ -1089,6 +1087,14 @@ h1.entry-title {
 }
 .list .archive-attach-wrap + p {
 	margin: 0;
+}
+.archive-content-wrap {
+    width: 65%;
+    float: left;
+}
+.archive-content-wrap p {
+	min-height: 9em;
+    margin-top: 0;
 }
 
 

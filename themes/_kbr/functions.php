@@ -164,6 +164,14 @@ require get_template_directory() . '/inc/jetpack.php';
 
 
 /* ******************************************************************** */
+/* For Admin ********** */
+include_once('functions-admin.php');
+/* ******************** */
+
+/*Adds Foo_Widget widget.*************** */
+include_once('functions-widget.php');
+/* ************************************* */
+
 
 // URL出力
 function tmpl_url() {
@@ -174,7 +182,7 @@ function asset($arg) {
 	echo tmpl_url() . '/' .$arg;
 }
 
-//ショートコード short code
+//ショートコード short code for Include MailForm
 function include_func( $atts ) {
 	
 	extract(shortcode_atts(array(
@@ -195,7 +203,7 @@ function include_func( $atts ) {
 add_shortcode( 'inclmf', 'include_func' );
 
 
-/* body class */
+/* body class 未使用 */
 function szc_body_class( $class = '' ) {
     global $wp_query;
     $classes = array();
@@ -373,7 +381,7 @@ function create_news() {
 add_action( 'init', 'create_news' );
 
 
-/* Custom Post */
+/* Custom Post ブログ作成->通常のpostにした */
 function create_blog() {
 	register_post_type( 'blog',
         array(
@@ -401,9 +409,7 @@ function create_blog() {
 }
 //add_action( 'init', 'create_blog' );
 
-/* For Admin ********** */
-include_once('functions-admin.php');
-/* ******************** */
+
 
 
 //ペジネーションのURLをリダイレクトさせない（パーマリンク設定がpostnameの時リダイレクトされるので）
@@ -456,6 +462,7 @@ function filter_search($query) {
 }
 add_filter('pre_get_posts', 'filter_search');
 
+
 //slugからIDを取る
 function id_by_slug($arg) {
     $page = get_page_by_path($arg);
@@ -466,7 +473,7 @@ function id_by_slug($arg) {
         NULL;
 }
 
-//コメント comment
+//コメント comment 管理画面「新しい投稿へのコメントを許可する」の値を取る 
 function isComment() {
 	return get_option('default_comment_status') == 'open';
 }
@@ -474,34 +481,21 @@ function isComment() {
 /* Custom Excerpt */
 function sz_content($char_count) {
 
-    if(is_search()) {
-        global $post;
-        $texts = $post->post_content; //DBからpost_contentを取得
-        $more_class = 'class="more-link" ';
-    }
-    else {
-        $texts = get_the_content(''); //ページ>the_post()からcontentを取得
-        $more_class = '';
-    }
+    $more_class = '';
+    $texts = get_the_content('');
     
-    $continue_format = '<a %shref="%s" title="%sのページへ">続きを読む ▷</a>';
+    $continue_format = '<a %shref="%s" title="%sのページへ"> …</a>';
     $continue_format = sprintf($continue_format, $more_class, esc_url(get_permalink()), get_the_title());
     
     $texts = strip_tags($texts); //htmlタグを消す
     $texts = str_replace("\n", '', $texts); //改行コード消し
-    $texts = mb_substr($texts, 0, $char_count);
     
-    /*$texts .= '<a '. $more_class . 'href="'. esc_url(get_permalink()) .'" title="'. get_the_title().'のページへ">続きを読む ▷</a>';*/
+    if(mb_strlen($texts) > $char_count+1) {
+    	$texts = mb_substr($texts, 0, $char_count);
+	    $texts = $texts . $continue_format;
+	}
     
-    //echo $texts . "…" . $continue_format;
-    echo "<p>" . $texts . "…</p>";
-        
-        /* サーチページやアーカイブページで使うか
-        global $post;
-        $texts = strip_tags( $post->post_content ); //DBからpost_contentを取得してhtmlタグを消す
-        $texts = str_replace("\n", '', $texts); //改行コードを消す
-        echo mb_substr($texts, 0, 120); //120文字抜粋
-        */
+    echo "<p>" . $texts . "</p>";
 }
 
 
@@ -696,11 +690,6 @@ function setSinglePagenation() {
 
 
 
-/*Adds Foo_Widget widget.*************** */
-include_once('functions-widget.php');
-
-/* ************************************* */
-
 
 //Admin Login
 function isNameAdmin() {
@@ -778,7 +767,41 @@ add_action('wp_logout', 'myEndSession');
 add_action('wp_login', 'myEndSession');
 
 
+function getLog() {
+	//print_r($_SERVER);
+    
+	setlocale(LC_TIME, 'ja_JP.UTF-8');
+    date_default_timezone_set('Asia/Tokyo');
+    
+    $date = strftime('%Y%m%d');
+    $logPath = realpath(dirname(__FILE__)) . '/logs';
+    $fileName = "$logPath/kbr.log";
+    
+    $accessTime = strftime('%c');
+    //$accessTime = date('Y年m月d日 H時i分s秒', time());
+    //$accessFile = $_SERVER['SCRIPT_FILENAME'];
+    
+    $accessPage = urldecode($_SERVER['REQUEST_URI']);
+    $referer = urldecode($_SERVER['HTTP_REFERER']);
+    $agent = $_SERVER['HTTP_USER_AGENT'];
+    
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $hostname = gethostbyaddr($ip);
+    
+    $log = "+ $accessTime $accessPage | $agent | $referer | $ip | $hostname\n";
+    
+    $fp = fopen($fileName, 'ab');
+    flock($fp, LOCK_SH);
+    fwrite($fp, $log);
+    fclose($fp);
+    
+}
 
+function tt() {
+	setlocale(LC_TIME, 'ja_JP.UTF-8');
+	date_default_timezone_set('Asia/Tokyo');
+    echo date('Y年m月d日 H時i分s秒', time());
+}
 
 
 

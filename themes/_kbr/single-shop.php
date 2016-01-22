@@ -26,7 +26,7 @@ get_header(); ?>
                         	<img class="head-icon" src="<?php asset('images/icon-title.png'); ?>">
                         	<h2><?php the_title(); ?></h2>
                         </div>
-                    </header><!-- .entry-header -->
+                    </header>
                 
                 	<div>
                     	<?php the_post_thumbnail(); ?>
@@ -55,8 +55,6 @@ get_header(); ?>
                         //タクソノミーを使用するのはどうか？
                         //query_posts(array('order'=>'DESC'));
                         
-                        //親データのカスタムメタ
-                        //$metaValue = get_post_meta($thisID, 'shop_id', true);
                                                 
                         //親データのカスタムメタと一致するものをpostから取得
                         $blog_query = new WP_Query( //array('tag_id'=>$tagid[0], 'orderby'=>'date', 'order'=>'ASC')                 
@@ -67,7 +65,7 @@ get_header(); ?>
                                 //'post_type' => 'blog',
                                 'post_type' => 'post',
                                 'posts_per_page' => 6,
-                                'orderby'=>'date',
+                                'orderby'=>'date ID',
                                 'order'=>'ASC',
                                 'paged'=> get_query_var('paged') ? get_query_var('paged') : 1,
                             )
@@ -81,6 +79,7 @@ get_header(); ?>
                         <?php
                         while ($blog_query->have_posts()) {
                         	$blog_query->the_post(); ?>
+                            
                             <article>
                             	<!--<div><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a></div>-->
                                 <?php 
@@ -96,7 +95,7 @@ get_header(); ?>
                             	<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                             	<?php 
                                 	//the_excerpt(); 
-                                	sz_content(55);
+                                	sz_content(65);
                                 ?>
                                 <div>
                                 	<?php the_time('Y年n月j日'); ?>
@@ -148,7 +147,7 @@ get_header(); ?>
 		endwhile; // End of the loop.
 		?>
 
-		</main><!-- #main -->
+		</main>
 	</div><!-- #primary -->
 
 <?php

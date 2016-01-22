@@ -37,6 +37,7 @@ if(isNameAdmin()) echo get_the_ID();
             ?>
         </div>
         
+        <div class="archive-content-wrap">
         <?php
             sz_content(150);
 
@@ -45,13 +46,14 @@ if(isNameAdmin()) echo get_the_ID();
                 'after'  => '</div>',
             ) );
         ?>
-        
+            
+            <footer class="entry-footer">
+                <?php 
+                    if(get_post_type() == 'post') 
+                        _s_entry_footer(); 
+                ?>
+            </footer>
     </div>
 
-    <footer class="entry-footer">
-        <?php 
-        	if(get_post_type() == 'post') 
-            	_s_entry_footer(); 
-        ?>
-    </footer><!-- .entry-footer -->
+    
 </article>

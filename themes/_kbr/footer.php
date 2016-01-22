@@ -19,8 +19,8 @@
 		<div class="site-info">
 			制作・管理・株式会社まちづくり柏原
 			<i class="fa fa-copyright"></i> 2016 All Rights Reserved
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+		</div>
+	</footer>
 </div><!-- #page -->
 
 <?php session_clear_onpage(); ?>
@@ -29,3 +29,5 @@
 
 </body>
 </html>
+
+<?php if(!isLocal()) getLog(); ?>
