@@ -703,9 +703,10 @@ function isLocal() {
 }
 
 function session_clear_onpage() {
-	global $post;
+	//global $post;
+    $metaName = get_post_meta(get_the_ID(), 'name_type', true);
     
-    if($post->post_name != 'inspect' && $post->post_name != 'newshop' && $post->post_name != 'contact') {
+    if($metaName != 'inspect' && $metaName != 'newshop' && $metaName != 'contact') {
         $_SESSION = array();
         session_destroy();        
     }

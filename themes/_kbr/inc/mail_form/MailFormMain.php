@@ -8,9 +8,14 @@ jQueryでpostする場合form のaction属性は不要
 各ページにフォームがあるので、残るsessionに注意が必要
 1ページの中で確認や完了を回転させるので、errorの値をsessionに入れる必要はなし
 プラグインsz-formと併用して、管理画面で設定・管理する必要がある
+
+★★★★★
+inspect,newshop,contactそれぞれ
+カスタムフィールド：name_typeの設定が必ず必要であることに注意!! ->セッションエラーにつながる
+★★★★★
 ***************************** */
 
-global $post;
+//global $post;
 //$slug = $post->post_name; //$slugはショートコードの引数で指定し、functions.php内でセットされている（187行目辺り）
 
 $mf = new MailForm($slug); //slugを入れる inspect or newshop or contact
@@ -40,7 +45,8 @@ if(! isset($_SESSION[$slug]) && ! isset($_POST['sz_ticket'])) {
     if($toConfirm != NULL) {
         $mf->setDataToSession();
         $mfError = new MailFormError($mf);
-        $errors = $mfError -> checkAllError();
+        
+        $errors = $mfError -> checkAllError(true); //true->erro checkする false->しない
     }
     //$errors = isset($_SESSION['error']) ? $_SESSION['error'] : NULL;
     ?>

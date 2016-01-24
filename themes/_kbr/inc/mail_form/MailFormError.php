@@ -89,7 +89,7 @@ class MailFormError extends MailForm {
 
 
 	//最終実行の関数
-    public function checkAllError() {
+    public function checkAllError($checkOrNot) {
         //global $ar;
         //$ar = $this->getTitleAndName();
         
@@ -102,13 +102,15 @@ class MailFormError extends MailForm {
 
         //エラーチェック＆出力
         $eAr = array();
-        $eAr = $this->checkNameAndMail();
         
-        //他エラー
-        if(! $this->mf->isType('contact') ) {
-        	$eAr = array_merge($eAr, $this->checkOtherError());
+        if($checkOrNot) {
+            $eAr = $this->checkNameAndMail();
+            
+            //他エラー
+            if(! $this->mf->isType('contact') ) {
+                $eAr = array_merge($eAr, $this->checkOtherError());
+            }
         }
-        
         return $eAr; 
         
         //入力画面の先頭でエラーチェックをして、ページ遷移をさせないので、errorをSESSIONに入れる必要がない
