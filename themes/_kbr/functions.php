@@ -290,12 +290,12 @@ function create_post_type() {
 	register_post_type( 'shop',
         array(
             'labels' => array(
-            	'name' => __( '加盟店舗' ),
-            	'singular_name' => __( 'shop_member' ),
+            	'name' => '加盟店舗',
+            	'singular_name' => '加盟店舗', //shop_member
                 'all_items' => '加盟店舗一覧',
                 'add_new_item' => '新規加盟店舗を追加',
                 'edit_item' => '加盟店舗を編集',
-          ),
+        ),
         'public' => true,
         'exclude_from_search' => true,
         'hierarchical' => false,
@@ -355,7 +355,7 @@ function create_news() {
         array(
             'labels' => array(
             	'name' => 'NEWS',
-            	'singular_name' => 'news_project',
+            	'singular_name' => 'NEWS', //news_project
                 'all_items' => 'ニュース一覧',
                 'add_new_item' => '新規ニュースを追加',
                 'edit_item' => 'ニュースを編集',
@@ -382,31 +382,31 @@ add_action( 'init', 'create_news' );
 
 
 /* Custom Post ブログ作成->通常のpostにした */
-function create_blog() {
-	register_post_type( 'blog',
-        array(
-            'labels' => array(
-            	'name' => __( '店舗ブログ' ),
-            	'singular_name' => __( 'shop_blog' ),
-                'add_new_item' => '新規店舗ブログを追加',
-                'edit_item' => '店舗ブログを編集',
-          ),
-        'public' => true,
-        'hierarchical' => false,
-        'menu_position' => 3,
-        'has_archive' => true, //現在はリストページのテンプレは固定ページではなくarchiveページにしている。これがtrueだとリストページは強制的にarchive(-azuma_news).phpになる
-        'publicly_queryable' => true,
-    	'show_ui' => true,
-    	'query_var' => true,
-        'capability_type' => 'post',
-    	'taxonomies' => array('category', 'post_tag'),
-        //'rewrite' => false,
-        'rewrite' => array('slug' => 'blog', 'with_front' => false, 'pages'=>true),
-        'supports' => array('title','editor','custom-fields', 'thumbnail',/* 'page-attributes',*/ 'post-formats', 'comments')
-    )
-  );
-  
-}
+//function create_blog() {
+//	register_post_type( 'blog',
+//        array(
+//            'labels' => array(
+//            	'name' => __( '店舗ブログ' ),
+//            	'singular_name' => __( 'shop_blog' ),
+//                'add_new_item' => '新規店舗ブログを追加',
+//                'edit_item' => '店舗ブログを編集',
+//          ),
+//        'public' => true,
+//        'hierarchical' => false,
+//        'menu_position' => 3,
+//        'has_archive' => true, //現在はリストページのテンプレは固定ページではなくarchiveページにしている。これがtrueだとリストページは強制的にarchive(-azuma_news).phpになる
+//        'publicly_queryable' => true,
+//    	'show_ui' => true,
+//    	'query_var' => true,
+//        'capability_type' => 'post',
+//    	'taxonomies' => array('category', 'post_tag'),
+//        //'rewrite' => false,
+//        'rewrite' => array('slug' => 'blog', 'with_front' => false, 'pages'=>true),
+//        'supports' => array('title','editor','custom-fields', 'thumbnail',/* 'page-attributes',*/ 'post-formats', 'comments')
+//    )
+//  );
+//  
+//}
 //add_action( 'init', 'create_blog' );
 
 

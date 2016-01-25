@@ -143,12 +143,13 @@ function changeAdminMenu() {
     //$menu[6] //加盟店舗
     unset($menu[5]);  // 移動後にブログ消す
     unset($menu[20]);  // 移動後に固定ページ消す
-    print_r($title);
-    
-    global $current_user;
-	//get_currentuserinfo();
-    if($current_user->user_login != 'admin' )
-		echo "<style>#toplevel_page_edit-post_type-acf{display:none;}</style>";
+    //print_r($submenu);
+
+//    global $current_user;
+//		get_currentuserinfo();
+//    if($current_user->user_login != 'admin' )
+//		echo "<style>#toplevel_page_edit-post_type-acf{display:none;}</style>";
+
 //    unset($menu[5]); // ブログ
 //    unset($menu[10]); // メディア
 //    unset($menu[15]); // リンク
@@ -163,6 +164,17 @@ function changeAdminMenu() {
 //    unset($menu[90]); // メニューの線3
 }
 add_action('admin_menu', 'changeAdminMenu');
+
+
+function my_remove_menu_elements() {
+	global $current_user;
+    
+    if($current_user->user_login != 'admin' ) { //user name adminの時は消さない
+		remove_submenu_page( 'themes.php', 'theme-editor.php' ); //外観->テーマ編集を消す
+    	remove_menu_page( 'edit.php?post_type=acf'); //Advanced custom field プラグインのメニューを消す
+    }
+}
+add_action('admin_init', 'my_remove_menu_elements');
 
 /*
 <li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-generic toplevel_page_edit?post_type=acf menu-top-last" id="toplevel_page_edit-post_type-acf">
