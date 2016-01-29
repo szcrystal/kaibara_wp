@@ -269,6 +269,10 @@ function addMainClass() {
     else
     	$class .= 'site';
     
+    if(get_post_meta(get_the_ID(), 'name_type', true) != '') {
+    	$class .= ' ' . get_post_meta(get_the_ID(), 'name_type', true);
+    }
+    
     echo $class . '"';
 }
 

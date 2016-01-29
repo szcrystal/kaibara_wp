@@ -12,8 +12,21 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+	</header>
 	
+    <?php 
+    if(get_post_meta(get_the_ID(), 'name_type', true) != '') {
+    ?>
+    	<div class="entry-content">
+        	<?php 
+            	the_post_thumbnail(); 
+            	the_content();
+            ?>
+        
+        </div>
+    <?php 
+    } else { ?>
+    
     <div class="entry-thumb">
     	<?php the_post_thumbnail(); ?>
 
@@ -28,8 +41,10 @@
 				'after'  => '</div>',
 			) );
 		?>
-	</div><!-- .entry-content -->
-
+	</div>
+    
+	<?php } ?>
+    
 	<footer class="entry-footer">
 		<?php
 //			edit_post_link(
@@ -42,5 +57,5 @@
 //				'</span>'
 //			);
 		?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+	</footer>
+</article>

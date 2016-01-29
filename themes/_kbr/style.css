@@ -874,6 +874,9 @@ h1.entry-title {
     width: 100%;
 }
 
+/* Page */
+
+
 
 /* Member Single */
 .entry-member .entry-header {
@@ -1201,30 +1204,41 @@ h2.widget-title {
 
 
 /* Form */
-div.warn {
-	clear: both;
-	border: 2px solid tomato;
-    //color: lightseagreen;
-    padding: 0.7em;
-    margin: 2em auto;
-    border-radius: 1em;
-    
+.inspect article,
+.newshop article {
+	width: 80%;
+    margin: auto;
 }
-.ill {
+.inspect article h1,
+.newshop article h1 {
+	font-weight: normal;
+    font-size: 1.4em;
+    margin-top: 3em;
+    padding-bottom: 0.3em;
+	border-bottom: 2px solid #a3c4ce;
+}
+.inspect .attachment-post-thumbnail,
+.newshop .attachment-post-thumbnail {
 	width: 150px;
     height: 150px;
     line-height: 150px;
     text-align: center;
-    background: #a3c4ce;
+    //background: #a3c4ce;
     color: #fff;
+    float: left;
+    margin-right: 2em;
+    margin-bottom: 2em;
 }
-.temp,
-.warn,
-#main-form,
-.form-title {
-	width: 80%;
-    margin: auto;
-    //border: 1px solid orange;
+
+
+.inspect .attachment-post-thumbnail + p,
+.newshop .attachment-post-thumbnail + p {
+	margin: 0;
+    padding: 0;
+    //border: 1px solid red;
+}
+#main-form {
+	clear: both;
 }
 .temp .ill, .temp p {
 	float: left;
