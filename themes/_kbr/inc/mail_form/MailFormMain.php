@@ -26,19 +26,32 @@ if(! isset($_SESSION[$slug]) && ! isset($_POST['sz_ticket'])) {
     //destroyをすると、sessionのticketが維持されない（ページ遷移1回目で維持されず、２回目で維持される）
     //destroyはページ移動してから初めて効く？
     $_SESSION[$slug] = array(); 
-    //echo "Cleard<br>";
+    //print_r($_SESSION[$slug]);
 }
 
 //if(isLocal()) ini_set('error_reporting', E_ALL);
 //@session_start();
-
+	
+    //Postされた時、されない時を判別するための変数 これでどこに遷移するかを決める    
+    $toConfirm = isset($_POST['toConfirm']) ? $_POST['toConfirm'] : NULL;
+    $toEnd = isset($_POST['toEnd']) ? $_POST['toEnd'] : NULL;
+    
+    // 視察<->出店 間でsessionが残るのでもし消すなら
+    /*
+    if($toConfirm == NULL) {
+    	foreach($_SESSION as $key => $val) {
+        	if($key != $slug) {
+            	$_SESSION[$key] = array();
+            }
+        }
+    }
+    */
+    
 	$sz_ticket = md5(uniqid(mt_rand(), TRUE));
     $_SESSION[$slug]['sz_ticket'][] = $sz_ticket;
     //print_r($_SESSION[$slug]['sz_ticket']);
 
-	//Postされた時、されない時を判別するための変数 これでどこに遷移するかを決める    
-    $toConfirm = isset($_POST['toConfirm']) ? $_POST['toConfirm'] : NULL;
-    $toEnd = isset($_POST['toEnd']) ? $_POST['toEnd'] : NULL;
+	
     
     //入力がPOSTされた時にデータをSessionに入れ、エラーをチェックする
     $errors = array();

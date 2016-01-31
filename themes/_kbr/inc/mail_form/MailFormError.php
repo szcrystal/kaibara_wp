@@ -36,7 +36,7 @@ class MailFormError extends MailForm {
         }
         elseif (mb_strlen($name) > 20) {
             //$error[] = mb_strlen($name);
-            $error[] = '『' . $titleName['nick_name'] . '』の文字数は全角20文字以内でお願いします。';
+            $error[] = '『' . $titleName['nick_name'] . '』の文字数は全角20文字以内で入力して下さい。';
         }
 
         if (trim($mail_add) =='') {
@@ -52,11 +52,40 @@ class MailFormError extends MailForm {
         return $error;
     }
     
+    //日付　過去と形式をチェックする
+    private function checkDatePastAndCorrect($date_time, $strArg) {
+    	$array = array();
+    	
+        //setlocale(LC_TIME, 'ja_JP.UTF-8');
+        date_default_timezone_set('Asia/Tokyo');
+        
+        //書式:2016年1月1日 8時をstrtotime用のフォーマットに変換
+        $date_time = str_replace(array('年','月'), '/', $date_time);
+        $date_time = str_replace('日', '', $date_time);
+        $date_time = str_replace('時', ':00:00', $date_time);
+        
+        //$time = mktime(); 年月各数値からtimestampを取得する
+        
+        //dateからパースする関数 おかしい書式にはwarningが返されるのでそれを利用
+        $dp = date_parse_from_format('Y-m-d H:i:s', $date_time);
+        
+        if( strtotime($date_time) < time()) {
+            $array[] = '『'.$this->mf->arTitleName[$strArg . '_date_time'].'』は過去の日時は指定できません。';
+        }
+        if($dp['warning_count'] != 0) {
+            $array[] = '『'.$this->mf->arTitleName[$strArg . '_date_time'].'』は正しい日時を入力して下さい。';
+        }
+        
+        return $array;
+    }
+    
+    
+    //名前とメールアドレス以外のエラー処理
     private function checkOtherError() {
     	$error = array();
         
     	$tel_num = $this->session['tel_num'][1];
-        $first_date_time = $this->session['first_date_time'][1];
+        $first_date_time = $this->session['first_date_time'][1]; //書式:2016年1月1日 8時が入っている
         
         //TEL番号チェック
         if (trim($tel_num) =='') {
@@ -67,14 +96,21 @@ class MailFormError extends MailForm {
         if(strpos($first_date_time, '--') !== FALSE) {
             $error[] = $this->returnRequireEmpty('first_date_time');
         }
+        else { //過去日付と形式チェック
+        	$error = array_merge($error, $this->checkDatePastAndCorrect($first_date_time, 'first'));
+        }
         
-        if($this->mf->isType('inspect')) { //視察フォームのみのエラーチェック
+        if($this->mf->isType('inspect')) { //視察フォーム時のエラーチェック
         	
             //second Date
         	$second_date_time = $this->session['second_date_time'][1];
-        	if(strpos($second_date_time, '--') !== FALSE) {
+        	
+            if(strpos($second_date_time, '--') !== FALSE) {
             	$error[] = $this->returnRequireEmpty('second_date_time');
         	}
+            else {
+            	$error = array_merge($error, $this->checkDatePastAndCorrect($second_date_time, 'second'));
+            }
             
             //視察目的
             $purpose = $this->session['purpose'][1];
@@ -89,7 +125,7 @@ class MailFormError extends MailForm {
 
 
 	//最終実行の関数
-    public function checkAllError($checkOrNot) {
+    public function checkAllError($checkOrNot) { //$checkOrNot : エラー省略時にfalseを渡す
         //global $ar;
         //$ar = $this->getTitleAndName();
         
@@ -107,7 +143,7 @@ class MailFormError extends MailForm {
             $eAr = $this->checkNameAndMail();
             
             //他エラー
-            if(! $this->mf->isType('contact') ) {
+            if(! $this->mf->isType('contact') ) { //コンタクト以外
                 $eAr = array_merge($eAr, $this->checkOtherError());
             }
         }
