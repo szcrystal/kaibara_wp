@@ -592,22 +592,43 @@ EOL;
             echo '<option value="--"' . $select .'>--</option>';
         }
         
-        if($first > $last) { //逆順の時 Yearにて
-            for($first; $first >= $last; $first--) {
-                if(isset($objNum) && $first == $objNum)
-                    echo '<option value="'.$first .'" selected>'.$first.'</option>';
-                else
-                    echo '<option value="'.$first .'">'.$first.'</option>';
-            }
+        $datas = $this->xrange($first, $last); //ジェネレータ
+            
+        foreach($datas as $data) {
+            if(isset($objNum) && $data == $objNum)
+                echo '<option value="'.$data .'" selected>'.$data.'</option>';
+            else
+                echo '<option value="'.$data .'">'.$data.'</option>';
         }
-        else { //正順
-            for($first; $first <= $last; $first++) {
-                if(isset($objNum) && $first == $objNum)
-                    echo '<option value="'.$first .'" selected>'.$first.'</option>';
-                else
-                    echo '<option value="'.$first .'">'.$first.'</option>';
-            }
-        }
+
+//		ORGコード ------------------        
+//        if($first > $last) { //逆順の時 Yearにて
+//            for($first; $first >= $last; $first--) {
+//                if(isset($objNum) && $first == $objNum)
+//                    echo '<option value="'.$first .'" selected>'.$first.'</option>';
+//                else
+//                    echo '<option value="'.$first .'">'.$first.'</option>';
+//            }
+//            
+//        }
+//        else { //正順
+//            for($first; $first <= $last; $first++) {
+//                if(isset($objNum) && $first == $objNum)
+//                    echo '<option value="'.$first .'" selected>'.$first.'</option>';
+//                else
+//                    echo '<option value="'.$first .'">'.$first.'</option>';
+//            }
+//			}
+    
+    }
+    
+    //selectBox($first, $last, $objNum=null)で使用するジェネレータ。 *** yieldで配列を使用せず値をキープできる
+    private function xrange($start, $end) {
+    	if($start > $end)  //逆順の時 Yearにて
+        	for($i = $start; $i >= $end; $i--) yield $i;
+        else //正順
+            for($i = $start; $i <= $end; $i++) yield $i;
+
     }
 
 

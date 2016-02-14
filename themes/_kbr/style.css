@@ -837,11 +837,12 @@ h1.entry-title {
     height: 500px;
     box-sizing: border-box;
     padding: 1.5em;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .home section:last-of-type {
 	margin-right: 0;
     border: none;
+    overflow: auto;
 }
 .home section.news {
 	padding-top: 0.5em;
