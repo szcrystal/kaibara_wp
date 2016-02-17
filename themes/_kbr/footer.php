@@ -23,9 +23,9 @@
 	</footer>
 </div><!-- #page -->
 
-<?php session_clear_onpage(); ?>
-
 <?php wp_footer(); ?>
+
+<?php session_clear_onpage(); ?>
 
 </body>
 </html>

@@ -710,7 +710,8 @@ function session_clear_onpage() {
 	//global $post;
     $metaName = get_post_meta(get_the_ID(), 'name_type', true);
     
-    if($metaName != 'inspect' && $metaName != 'newshop' && $metaName != 'contact') {
+    //if($metaName != 'inspect' && $metaName != 'newshop' && $metaName != 'contact') {
+    if($metaName == '') {
         $_SESSION = array();
         session_destroy();        
     }
