@@ -46,10 +46,10 @@ class AllBlogByShopWidget extends WP_Widget {
         
     	$objs = $objs->posts;
         
-        $linkFormat = '<li><a href="%s">%s店のブログ</a></li>';
+        $linkFormat = '<li><a href="%s">%sのブログ</a></li>';
         
         echo '<ul id="menu-side-menu" class="menu">'. "\n";
-        printf($linkFormat, home_url('blog/'), '全ての');
+        printf($linkFormat, home_url('blog/'), '全て');
         
         foreach($objs as $obj) {
         	$link = 'blog/?shop_id=' . $obj->ID;

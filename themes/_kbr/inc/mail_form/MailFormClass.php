@@ -425,7 +425,8 @@ class MailForm {
     public function format_return($arg) {
         
         $adminHead = $this->admin['head']; //EOL内に入れるとエラーになる ObjectからのStringが良くないぽい
-
+		$title = get_the_title();
+        
 //to user mail sentence
 $context = <<<EOL
 {$arg} 様
@@ -434,7 +435,8 @@ $context = <<<EOL
 $adminHead
 
 
-□□□□□□□　お問い合わせ内容　□□□□□□□
+□□□□□□□　{$title} 内容　□□□□□□□
+
 
 EOL;
 // END to user mail sentence
@@ -452,11 +454,14 @@ EOL;
 
         //$adminRow = getAdminRow();
         $title = get_the_title();
+        $siteName = get_bloginfo('name');
 
 //to Admin mail sentence /* ★ */
 $context = <<<EOL
 
-サイトより{$title}の応募がありました。
+「{$siteName}」サイトの{$title}より
+メッセージの送信がありました。
+
 頂きました内容は下記となります。
 
 
@@ -505,9 +510,14 @@ EOL;
     
     	$mailTo = $this->admin['email']; //メインアドレス問い合わせの届け先（カンマ区切りで複数指定可）
     	$mainMail = $this->admin['email']; //確認メール内に記載される返信先（ヘッダーアドレス）
+        
+        if(strpos($mainMail, ',')) {
+        	$arr = explode(',', $mainMail);
+            $mainMail = $arr[0];
+        }
     
     	/* 件名 */
-        $subject = get_the_title() . 'がありました 〜'. $this->admin['name'] . '〜'; //Master用
+        $subject = get_the_title() . 'よりメッセージがありました ー'. $this->admin['name'] . 'ー'; //Master用
         $return_subject = $this->admin['subject']; //User用
         
     	$returnMail = $this->szMail; //Undelivered Mailの送信先 postfix(smtpなし状態)で確認可能
@@ -530,16 +540,16 @@ EOL;
         	$result_master = mb_send_mail( $mailTo, $subject, $this->format_admin(), $header, '-f' . $returnMail );
         }
         else {
-            $header .= 'MIME-Version: 1.0'."\r\n"; //qmailの時は改行コードを\n(LF)のみにする mail()関数は使えないがドメインキング->qmailなので注意
+            $header .= "\r\n".'MIME-Version: 1.0'."\r\n"; //qmailの時は改行コードを\n(LF)のみにする mail()関数は使えないがドメインキング->qmailなので注意
         	$header .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
             //Content-Transfer-Encoding: quoted-printable
             
-            $return_header .= 'MIME-Version: 1.0'."\r\n";
+            $return_header .= "\r\n".'MIME-Version: 1.0'."\r\n";
             $return_header .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
 
     		$body = nl2br($this->format_admin())."\r\n";
             
-            $result_master = mail( $mailTo, $subject, $body, $header, '-f' . $returnMail );
+            $result_master = mail( $mailTo, $subject, $body, $header, '-f'.$returnMail );
         }
     
     
@@ -548,7 +558,7 @@ EOL;
         
 
         if($result_master){
-        	/* Send mail to user */
+        	/* Send mail to User */
         	if(isDK()) {
             	$result_user = mb_send_mail( $mail_add, $return_subject, $this->format_return($name), $return_header, '-f'.$returnMail );
             }

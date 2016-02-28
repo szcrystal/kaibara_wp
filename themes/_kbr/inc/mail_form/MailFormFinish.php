@@ -63,8 +63,8 @@
     $ret = $mf->sendMailAndSetDB();
 
     if($ret == 1){
-        echo "<p>ありがとうございます。<br />メッセージの送信が完了しました。</p>";
-        echo '<a href="/">HOME</a>';
+        echo '<div class="confFin"><p>ありがとうございます。<br />メッセージの送信が完了しました。</p>';
+        echo '<a href="/">HOME</a></div>';
     }
     else {
         echo '<p><span>送信に失敗しました。<br>再度送信するか、直接メールにて <a href="mailto:'.$mf->admin['email'].'">'. $mf->admin['email'] ."</a> までお送りください。</span><br>Error:{$ret}</p>";

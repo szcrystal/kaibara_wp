@@ -12,7 +12,7 @@
  */
 
 get_header(); ?>
-<?php if(isLocal()) echo __FILE__; ?>
+<?php //if(isLocal()) echo __FILE__; ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 

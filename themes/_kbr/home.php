@@ -22,19 +22,14 @@ get_header(); ?>
         //$count = get_option( 'posts_per_page', 10 );
     ?>
 
-    <?php
-		//if ( have_posts() ) : ?>
-
 			<header class="page-header">
-            	<h1 class="page-title"><i class="fa fa-square"></i>
-            	<?php if($shop_id) {
+            	<h1 class="page-title"><i class="fa fa-stop"></i><?php if($shop_id) {
                 	echo get_the_title($shop_id) . 'のブログ';
                 } 
                 else {
                     $obj = get_post_type_object('post'); //register_post_type、セットしたカスタム投稿の情報取得
                     echo '全てのブログ'/* . $obj->labels->name*/;
-                } ?>
-                </h1>
+                } ?></h1>
 				<?php //the_archive_title( '<h1 class="page-title">', '</h1>' );
                 the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?>
                 
@@ -52,24 +47,34 @@ get_header(); ?>
                                 'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
                                 
                                 ));
-                //echo $s_blog->post_count . "<br>";
-                
-                set_pagenation($s_blog);
-            	
-                while ($s_blog->have_posts()) : $s_blog->the_post();
-					get_template_part( 'template-parts/content', 'archive' );
-            	endwhile;
-                
-                set_pagenation($s_blog);
+                if($s_blog->post_count == 0) {
+                	$shopTitle = get_the_title($shop_id);
+                	echo $shopTitle . "店のブログはまだありません。<br>";
+                    echo $shopTitle . 'の店舗情報は<a href="'.get_the_permalink($shop_id).'" style="color:#06c;">こちら</a>';
+                }
+                else {
+                    set_pagenation($s_blog);
+                    
+                    while ($s_blog->have_posts()) : $s_blog->the_post();
+                        get_template_part( 'template-parts/content', 'archive' );
+                    endwhile;
+                    
+                    set_pagenation($s_blog);
+                }
                 
             else :
-            	set_pagenation(); 
-                
-                while (have_posts()) : the_post();
-					get_template_part( 'template-parts/content', 'archive' );
-				endwhile;
-				
-                set_pagenation();
+            	if ( have_posts()) {
+                    set_pagenation(); 
+                    
+                    while (have_posts()) : the_post();
+                        get_template_part( 'template-parts/content', 'archive' );
+                    endwhile;
+                    
+                    set_pagenation();
+                }
+                else {
+                	echo "まだブログはありません。";
+                }
 			endif; 
 
 			//the_posts_navigation();
@@ -93,34 +98,35 @@ get_header(); ?>
         	<header class="entry-header">
             
             <?php
-            	//$shopID = get_post_meta($thisID, 'shop_id', true);
-				//echo $shopID;
+            	//$shopID = get_post_meta($shop_id, 'shop_id', true);
+				wp_reset_query();
                 //global $post;
                 //$post = get_post($shopID, 'OBJECT', 'display');
-                //$shop = new WP_Query(array('page_id'=>$shop_id, 'post_type'=>'shop'));
+                $shop = new WP_Query(array(
+                                           'page_id'=>$shop_id,
+                                           'post_type'=>'shop',
+                                           'posts_per_page'=>-1));
                 
-                wp_reset_query();
-                
-                global $post;
-                $post = get_post($shop_id);
+                //global $post;
+                //$post = get_post($shop_id);
 
-            	 //while ( $shop->have_posts() ) : 
-            		//$shop->the_post(); 
+            	 while ( $shop->have_posts() ) : 
+            		$shop->the_post(); 
             ?>
             <div class="clear">
             	<img class="head-icon" src="<?php asset('images/icon-title.png'); ?>">
             	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
             </div>
-        </header><!-- .entry-header -->
+        </header>
     
         <div>
             <?php the_post_thumbnail(); ?>
         </div>
-        <div>
-            <?php echo $post->post_content; ?>
-        </div>
+        	<?php the_content(); ?>
+            <?php //echo $post->post_content; ?>
         
-        <?php //endwhile; ?>
+        
+        <?php endwhile; ?>
     </div>
     
     <?php } ?>

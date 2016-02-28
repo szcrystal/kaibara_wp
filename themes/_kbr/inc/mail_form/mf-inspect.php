@@ -56,7 +56,7 @@
         <select <?php $mf->e_('select_first_d'); ?>>
             <?php $mf->selectBox(1, 31, $mf->h_esc(@$_SESSION[$slug]['select_first_d'][1])); ?>
         </select>
-        <span>日　</span>
+        <span>日</span>
         
         <select <?php $mf->e_('select_first_t'); ?>>
             <?php $mf->selectBox(8, 22, $mf->h_esc(@$_SESSION[$slug]['select_first_t'][1])); ?>
@@ -81,7 +81,7 @@
         <select <?php $mf->e_('select_second_d'); ?>>
             <?php $mf->selectBox(1, 31, $mf->h_esc(@$_SESSION[$slug]['select_second_d'][1])); ?>
         </select>
-        <span>日　</span>
+        <span>日</span>
         <select <?php $mf->e_('select_second_t'); ?>>
             <?php $mf->selectBox(8, 22, $mf->h_esc(@$_SESSION[$slug]['select_second_t'][1])); ?>
         </select>

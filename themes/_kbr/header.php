@@ -12,8 +12,11 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font-awesome.min.css">
-
+<!--<link href="http://fonts.googleapis.com/css?family=Josefin+Sans:300,600" rel="stylesheet" type="text/css">-->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
 <?php wp_head(); ?>
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jq.script.js"></script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -27,24 +30,19 @@
 			<?php
 			//if ( is_front_page() && is_home() ) : 
             ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="/wp-content/themes/kaibara/images/logo.png" alt="柏原まちづくりプロジェクト"></a></h1>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="/wp-content/themes/_kbr/images/logo.png" alt="丹波の城下町で仕事をつくる"></a></h1>
                 <h2><?php bloginfo('description'); ?></h2>
-                <i class="fa fa-facebook-square"></i>
-			<?php
-
-
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php //echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
-		</div><!-- .site-branding -->
+                <a href="https://www.facebook.com/まちづくり柏原-153037668187188/" class="fb" target="_brank"><i class="fa fa-facebook-square"></i></a>
+                
+                <span class="tgl"><i class="fa fa-bars"></i></span>                
+		</div>
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', '_s' ); ?></button>
+			<!--<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', '_s' ); ?></button> -->
+            
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'head-menu' ) ); ?>
-            <!--<i class="fa fa-facebook-square"></i>-->
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+
+		</nav>
+	</header>
 
 	<div id="content" class="site-content">

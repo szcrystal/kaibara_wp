@@ -31,9 +31,9 @@ get_header(); ?>
                 	<div>
                     	<?php the_post_thumbnail(); ?>
                     </div>
-                    <div>
+                    
                     	<?php the_content(); ?>
-					</div>
+					
                 </div>
 
 				<?php 
@@ -87,11 +87,17 @@ get_header(); ?>
                                     $feat_image_url = wp_get_attachment_url( get_post_thumbnail_id() );
                                     //echo $feat_image_url;
                                     //echo '<div style="background-image:url('.$feat_image_url.');" class="wrap-attach"></div>';
-                                }
+                                
                                 ?>
                                 <div style="background-image:url(<?php echo $feat_image_url; ?>);" class="attach-wrap">
                                 	<a href="<?php the_permalink(); ?>"></a>
                                 </div>
+                                
+                                <?php } else { ?>
+                                	<div style="background:#f7f7f7; text-align:center; line-height:16em" class="attach-wrap">
+                                		<a href="<?php the_permalink(); ?>">No Image</a>
+                                	</div>
+                                <?php } ?>
                             	<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                             	<?php 
                                 	//the_excerpt(); 
@@ -125,7 +131,15 @@ get_header(); ?>
                     
                     <div class="map-wrap">
             			<div class="map">
-                            <?php illustOutputDivAndImg('div', 'id', FALSE); ?>
+                        	<?php 
+                            $wp_query = new WP_Query(array('post_type'=>'shop', 'posts_per_page' => -1));            
+            
+            				while($wp_query->have_posts()) {
+            					$wp_query->the_post();
+                            	illustOutputDivAndImg('div', 'id', TRUE); 
+                            }
+                            wp_reset_query();
+                            ?>
                     	</div>
                     </div>
                     

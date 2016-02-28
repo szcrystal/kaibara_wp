@@ -76,8 +76,9 @@
     //Object取得
     $objs = $mf->getObjSendingData(); //echo $mf->format_func($value="\n")
     ?>
-    
+    <div class="confFin">
     <p>下記の内容で送信します。<br>よろしければ送信ボタンを押して下さい。</p>
+    </div>
         
     <table class="table table-form">
         <colgroup>

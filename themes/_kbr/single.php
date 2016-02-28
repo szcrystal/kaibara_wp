@@ -13,7 +13,7 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-
+<?php if(isLocal()) echo __FILE__; ?>
     <?php
         //$shid = get_post_meta(get_the_ID(), 'shop_id', true);
         
@@ -47,15 +47,19 @@ get_header(); ?>
 				//echo $shopID;
                 wp_reset_query();
                 //wp_reset_postdata();
-                global $post;
-                $post = get_post($shopID);
-                //$shop = new WP_Query(array('page_id'=>$shopID, 'post_type'=>'shop'));
+                
+                //global $post;
+                //$post = get_post($shopID);
+                $shop = new WP_Query(array(
+                                           'page_id'=>$shopID,
+                                           'post_type'=>'shop',
+                                           'posts_per_page'=>-1));
                 
             ?>
 
             <?php
-//            	 while ( $shop->have_posts() ) : 
-//            		$shop->the_post(); 
+            	 while ( $shop->have_posts() ) :
+            		$shop->the_post();
             ?>
             <div class="clear">
             	<img class="head-icon" src="<?php asset('images/icon-title.png'); ?>">
@@ -66,11 +70,11 @@ get_header(); ?>
         <div>
             <?php the_post_thumbnail(); ?>
         </div>
-        <div>
-            <?php echo $post->post_content; ?>
-        </div>
+            <?php the_content(); ?>
+            <?php //echo $post->post_content; ?>
+
         
-        <?php //endwhile; ?>
+        <?php endwhile; ?>
     </div>
 
 <?php

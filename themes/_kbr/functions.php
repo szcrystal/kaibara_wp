@@ -78,7 +78,7 @@ function _s_setup() {
 		'default-image' => '',
 	) ) );
     
-    add_image_size( 'archive', 195, 180, TRUE );
+    add_image_size( 'archive', 230, 180, TRUE );
     
     
     add_post_type_support( 'post', 'page-attributes' );
@@ -133,6 +133,8 @@ function _s_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+    //wp_enqueue_script( 'szjq', 'http://code.jquery.com/jquery-1.12.0.min.js', array(), '', true );
+    //wp_enqueue_script( 'sz', get_template_directory_uri() . '/js/jq.script.js', array(), '20160206', true );
 }
 add_action( 'wp_enqueue_scripts', '_s_scripts' );
 
@@ -180,6 +182,10 @@ function tmpl_url() {
 
 function asset($arg) {
 	echo tmpl_url() . '/' .$arg;
+}
+
+function outputUrl($arg) {
+	echo home_url() . '/' .$arg . '/';
 }
 
 //ショートコード short code for Include MailForm
@@ -262,6 +268,19 @@ function addMainClass() {
     
 	if(is_front_page()) 
     	$class .= 'top';
+    elseif(is_page()) {
+    	$class .= 'fixpage';
+        
+//        if(get_page_slug(get_the_ID()) != '') {
+//            $class .= ' ' . get_page_slug(get_the_ID());
+//        }
+		
+        $nameType = get_post_meta(get_the_ID(), 'name_type', true);
+        
+        if($nameType != '') 
+            $class .= ' ' . $nameType;
+
+    }
     elseif(is_singular('shop'))
     	$class .= 'shop';
     elseif(is_home() || is_archive() || is_search() || is_single()) //is_post_type_archive($post_type)
@@ -269,13 +288,13 @@ function addMainClass() {
     else
     	$class .= 'site';
     
-    if(get_post_meta(get_the_ID(), 'name_type', true) != '') {
-    	$class .= ' ' . get_post_meta(get_the_ID(), 'name_type', true);
-    }
     
     echo $class . '"';
 }
 
+/* auto p tag remove */
+//remove_filter('the_content', 'wpautop');
+//remove_filter('the_excerpt', 'wpautop');
 
 function my_getarchives_where( $where, $r ) {
   if ( isset($r['post_type']) ) {
@@ -476,6 +495,11 @@ function id_by_slug($arg) {
     else
         NULL;
 }
+//IDからスラッグをとる
+function get_page_slug($page_id) {
+    $page = get_page($page_id);
+    return $page->post_name;
+}
 
 //コメント comment 管理画面「新しい投稿へのコメントを許可する」の値を取る 
 function isComment() {
@@ -533,13 +557,16 @@ function illustOutputDivAndImg($tagname='div', $IdOrMeta='id', $isFront) {
             $y = get_post_meta(get_the_id(), 'y', true);
                     
             $x = ($x/100) * 1000 - ($attach_meta['width']/2); //1000 ->画像のサイズ横 
-            $y = ($y/100) * 575 - ($attach_meta['height']/2); //650 ->画像のサイズ縦
+            $y = ($y/100) * 640 - ($attach_meta['height']/2); //650 ->画像のサイズ縦
             
             $ret = '<div style="';
             $ret .= 'top:'.$y.'px; ';
             $ret .= 'left:'.$x.'px;" ';
-            $ret .= 'class="map-caption">'."\n";
-        	
+            $ret .= 'class="map-caption" ';
+            $ret .= 'data-top="'.$y.'" ';
+            $ret .= 'data-left="'.$x.'">'."\n";
+            
+            
             //リンク出力
         	if($isFront) {
             	$ret .= '<a href="'. get_the_permalink() . '" title="'. get_the_title() . 'のページへ">';
@@ -547,7 +574,11 @@ function illustOutputDivAndImg($tagname='div', $IdOrMeta='id', $isFront) {
             //画像出力
             //$ret = 'src="' . wp_get_attachment_url($i_id) .'" ';
             //$ret .= 'alt="' . get_the_title() .'"';
-            $ret .= wp_get_attachment_image($i_id, array($attach_meta['width'], $attach_meta['height']), false, array('alt'=>get_the_title()) );
+            
+            // さくらサーバーにて、array()にてサイズを指定するとうまくいかない。なぜか不明。$attach_meta['width']はfullサイズを取れている
+            //なので 'full'を指定する
+            //$ret .= wp_get_attachment_image($i_id, array($attach_meta['width'], $attach_meta['height']), false, array('alt'=>get_the_title()) );
+            $ret .= wp_get_attachment_image($i_id, 'full', false, array('alt'=>get_the_title()) );
             
             if($isFront) {
             	$ret .= "</a>\n";

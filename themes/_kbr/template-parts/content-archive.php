@@ -39,7 +39,7 @@ if(isNameAdmin()) echo get_the_ID();
         
         <div class="archive-content-wrap">
         <?php
-            sz_content(150);
+            sz_content(135);
 
             wp_link_pages( array(
                 'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_s' ),

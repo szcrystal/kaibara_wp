@@ -14,11 +14,13 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
     	<div class="footnavi">
-    	<?php wp_nav_menu( array( /*'theme_location' => 'primary',*/ 'menu_id' => 'foot-menu' ) ); ?>
+        	<div>
+    			<?php wp_nav_menu( array( /*'theme_location' => 'primary',*/ 'menu_id' => 'foot-menu' ) ); ?>
+            </div>
         </div>
 		<div class="site-info">
-			制作・管理・株式会社まちづくり柏原
-			<i class="fa fa-copyright"></i> 2016 All Rights Reserved
+			<?php //bloginfo('name'); ?>
+            <i class="fa fa-copyright"></i> 株式会社まちづくり柏原 All Rights Reserved
 		</div>
 	</footer>
 </div><!-- #page -->
@@ -27,6 +29,7 @@
 
 <?php session_clear_onpage(); ?>
 
+<span class="top_btn"><i class="fa fa-angle-up"></i></span>
 </body>
 </html>
 
