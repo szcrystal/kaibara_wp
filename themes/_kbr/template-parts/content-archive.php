@@ -24,18 +24,21 @@ if(isNameAdmin()) echo get_the_ID();
     </header>
 
     <div class="entry-content clear">
+    
+    	<?php if (has_post_thumbnail()) { ?>
     	<div class="archive-attach-wrap">
         	<?php 
             	echo '<a href="' . get_the_permalink() . '">';
-            	if (has_post_thumbnail()) 
+            	//if (has_post_thumbnail()) 
                 	the_post_thumbnail('archive');
                     //echo '<div style="background-image:url('. wp_get_attachment_url(get_post_thumbnail_id() ).');" class="archive-attach-wrap"></div>';
-                else 
-                	echo 'No Image';
+                //else 
+                //	echo 'No Image';
                 
                 echo '</a>';
             ?>
         </div>
+        <?php } ?>
         
         <div class="archive-content-wrap">
         <?php

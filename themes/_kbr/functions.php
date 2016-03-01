@@ -89,6 +89,38 @@ endif;
 add_action( 'after_setup_theme', '_s_setup' );
 
 
+function custom_editor_settings( $arr ){
+	//https://www.tinymce.com/docs/configure/content-filtering/#valid_elements
+    //optionは上記にて　しかしほとんどが効かない
+    
+    //http://yokotakenji.me/log/cms/wordpress/3139/
+
+	//$$arr['body_id'] = 'primary';
+	//$$arr['body_class'] = 'fa';
+	// styleや、divの中のdiv,span、spanの中のspanを消させない
+	//$arr['valid_children'] = 'p[strong|a|#text]';
+    //$arr['paste_remove_spans'] = true;
+    //$arr['element_format'] = 'HTML';
+    //$arr['selector'] = 'textarea';
+    //$arr['valid_elements'] = '*[*]';
+    //$arr['content_css'] = get_template_directory_uri() . "/style.css";
+	
+    //$arr['remove_trailing_brs'] = false;
+    //$arr['block_formats'] = "pタグ=p;h1タグ=h1;h2タグ=h2;h3タグ=h3;";
+    //$arr['wpautop'] = false;
+    //$arr['keep_styles'] = false;
+    //$arr['object_resizing'] = false;
+    // 空タグや、属性なしのタグとか消そうとしたりするのを停止。
+	$arr['verify_html'] = false;
+
+	//$initArray['entity_encoding'] = 'raw';
+	//$initArray['entities'] = '91,93';
+    //print_r($arr);
+	return $arr;
+}
+add_filter( 'tiny_mce_before_init', 'custom_editor_settings' );
+
+
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -124,7 +156,10 @@ add_action( 'widgets_init', '_s_widgets_init' );
  * Enqueue scripts and styles.
  */
 function _s_scripts() {
-	wp_enqueue_style( '_s-style', get_stylesheet_uri() );
+	if(isAgent('all'))
+    	wp_enqueue_style( 'style-sp', get_template_directory_uri() . '/style-sp.css');
+    else
+		wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 

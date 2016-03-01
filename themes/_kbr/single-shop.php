@@ -23,7 +23,7 @@ get_header(); ?>
                         <?php
                         endif; ?>
                         <div class="clear">
-                        	<img class="head-icon" src="<?php asset('images/icon-title.png'); ?>">
+                        	<!-- <img class="head-icon" src="<?php asset('images/icon-title.png'); ?>"> -->
                         	<h2><?php the_title(); ?></h2>
                         </div>
                     </header>
@@ -32,7 +32,7 @@ get_header(); ?>
                     	<?php the_post_thumbnail(); ?>
                     </div>
                     
-                    	<?php the_content(); ?>
+                    <?php the_content(); ?>
 					
                 </div>
 
