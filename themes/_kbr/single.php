@@ -4,7 +4,6 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package _s
  */
 
 get_header(); ?>
@@ -80,3 +79,4 @@ get_header(); ?>
 <?php
 
 get_footer();
+
