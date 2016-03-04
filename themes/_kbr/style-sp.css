@@ -9,9 +9,6 @@ for SP
 @media only screen and (max-width: 1000px) {
 	body {
     	min-width: 100%;
-        //font-size: 13px;
-        //line-height: 1.6em;
-        //background: red;
     }
 	.page #main,
 	.single #main,
@@ -37,11 +34,9 @@ for SP
     .list .entry-member {
     	width: auto;
         margin: 0 1em 3em;
-        //border: 1px solid red;
     }
     .main-navigation ul {
     	width: 73%;
-        //margin-left: 8%;
     }
 
     .top .entry-content {
@@ -94,7 +89,6 @@ for SP
 @media only screen and (max-width: 800px) { /* iPad */
 	body {
     	font-size: 13px;
-        //border: 1px solid orange;
     }
     .main-navigation ul {
     	width: 80%;
@@ -125,11 +119,9 @@ for SP
     	margin-top: 0;
     }
     .site-branding {
-    	//padding: 120px 0 0;
         height: 450px;
     }
     .site-branding h1 {
-    	//height: 285px;
         margin-bottom: 0;
     }
     .site-branding .tgl {
@@ -148,7 +140,6 @@ for SP
     .site-branding .fa-bars {
         color: #fff;
         margin: 0;
-        //vertical-align: top;
     }
     .main-navigation {
     	display: none;
@@ -158,14 +149,12 @@ for SP
     	width: 100%;
         margin: 0;
         padding: 0;
-        //border: 1px solid orange;
     }
     .main-navigation li {
     	width: 50%;
         margin: 0;
         padding: 1em 1em 1em 1.8em;
         font-size: 1em;
-        //border: 1px solid green;
     }
     .main-navigation a {
     	padding: 0;
@@ -200,7 +189,6 @@ for SP
     }
     .top section:last-of-type div:last-of-type img {
     	margin-bottom: 0;
-        //border: 1px solid red;
     }
     
     .about article h1.entry-title {
@@ -221,10 +209,8 @@ for SP
     	margin-bottom: 2.5em;
     }
     .about section div.beaf {
-    	//float: none;
         margin: 0;
         width: 45%;
-        //border: 1px solid red;
     }
     .about section div.beaf:nth-of-type(2) {
     	width: 10%;
@@ -245,7 +231,6 @@ for SP
     /*Archive */
     .list .archive-attach-wrap {
     	width: 100%;
-        //height: 100px;
         float: none;
         margin: 0;
     }
@@ -275,9 +260,7 @@ for SP
     .entry-blog article {
     	float: none;
         width: 100%;
-        //min-height: 0;
         margin-bottom: 4em;
-        //border-bottom: 1px dotted #ddd;
     }
     .entry-blog article h3 {
     	min-height: 0;
