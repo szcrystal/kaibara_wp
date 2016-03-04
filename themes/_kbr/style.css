@@ -201,7 +201,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 input[type="search"] {
-    //box-sizing: content-box;
+    /*box-sizing: content-box;*/
 	-webkit-appearance: none;
 }
 
@@ -247,7 +247,7 @@ textarea {
 	color: #333;
 	font-family: "Meiryo",/*"YuGothic",*/ sans-serif;
 	font-size: 14px;
-	//font-size: 1rem;
+	/*font-size: 1rem;*/
 	line-height: 1.7;
 }
 
@@ -263,7 +263,6 @@ h6 {
 
 p { /* all p */
 	margin-bottom: 1em;
-    //line-height: 1.8em;
 }
 
 dfn,
@@ -455,7 +454,7 @@ textarea {
 	display: inline-block;
     width: 100%;
     height: 30px;
-    //padding: 6px 5px;
+    /*padding: 6px 5px;*/
     font-size: 13px;
     line-height: 1.42857143;
     color: #555;
@@ -512,15 +511,15 @@ input[type="time"],
 input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"] {
-	//box-sizing: content-box;
-    //width: 98%;
+	/*box-sizing: content-box;
+    width: 98%;*/
 	padding: 0 5px;
     line-height: auto;
 }
 input[type="search"] {
 	padding-right: 0;
     padding-left: 1.5em;
-    //box-sizing: content-box;
+    /*box-sizing: content-box;*/
 }
 textarea {
 	padding-top: 3px;
@@ -549,7 +548,6 @@ button[type="submit"] {
 ## Links
 --------------------------------------------------------------*/
 a {
-	//color: royalblue;
     color: #333;
     text-decoration: none;
 }
@@ -561,7 +559,6 @@ a:visited {
 a:hover,
 a:focus,
 a:active {
-	//color: midnightblue;
     color: #bbb;
     outline: 0;
 }
@@ -569,29 +566,21 @@ a:active {
 
 /* Header ********* */
 .site-header {
-	//background: url(images/t-blue.png) 50% 0 repeat-x;
     background: url(images/tile-blue.png) 50% 0 repeat-x;
     color: #fff;
-    //width: 100%;
-    //border: 1px solid red;
 }
 .site-branding {
     width: 1000px;
     margin: auto;
-	//background: url(images/head.png) 50% 0 no-repeat;
     background: url(images/head-back.png) no-repeat;
-    //background-size: 100% auto;
     padding-top: 105px;
     margin-top: 45px;
     position: relative;
-    //border: 1px solid orange;
 }
 .site-branding h1 {
-	//border: 1px solid purple;
     text-align: center;
     margin: 1.7em 0 0;
     height: 325px;
-    //visibility: hidden;
 }
 .site-branding h2 {
 	position: absolute;
@@ -626,7 +615,6 @@ a:active {
 	width: 1000px;
     margin: 0 auto;
     position: relative;
-    //border: 1px solid blue;
 }
 .main-navigation .fa {
     font-size: 2.3em;
@@ -641,7 +629,6 @@ a:active {
 	margin: 0 auto;
 	padding-left: 0;
     width: 60%;
-    //border: 1px solid orange;
 }
 .main-navigation ul:after {
 	display: block;
@@ -654,13 +641,11 @@ a:active {
     font-size: 1.1em;
 	position: relative;
     margin-right: 14%;
-    //border: 1px solid blue;
 }
 .main-navigation li:last-of-type {
 	margin-right: 0;
 }
 .main-navigation a {
-	//display: block;
 	text-decoration: none;
     padding-left: 0.08em;
 }
@@ -769,8 +754,6 @@ img,
 .error404 #main {
 	width: 1000px;
     margin: 0 auto;
-    //min-height: 800px;
-    //border: 1px solid red;
 }
 
 .error404 #main,
@@ -780,7 +763,6 @@ img,
 	min-height: 700px;
 }
 .top #main {
-	//min-height: 1em;
     margin: 0 auto;
     width: auto;
 }
@@ -805,7 +787,6 @@ img,
     text-align: center;
     letter-spacing: 0.02em;
     margin: 0.5em 0 0;
-    //border: 1px solid green;
 }
 .top .site-content h1.entry-title span {
 	font-size: 0.9em;
@@ -815,7 +796,6 @@ img,
 .top .entry-content {
 	width: 80%;
     margin: 0 auto;
-	//border: 1px solid green;
 }
 .top .entry-content p {
 	clear: both;
@@ -824,7 +804,6 @@ img,
     line-height: 1.8em;
     margin: 1.8em auto 0;
     padding: 0;
-    //border: 1px solid red;
 }
 .top .entry-content > .clear {
     margin: 2em 0 1.7em;
@@ -885,8 +864,6 @@ img,
     margin: 0 auto;
     background: url(images/main-map.png) 50% 50% no-repeat;
     background-size: 100% auto;
-    //background: url(images/caro-left.png) 0 0 no-repeat, url(images/caro-right.png) 100% 0 no-repeat;
-    //border: 1px solid red;
 }
 .map-caption {
 	position: absolute;
@@ -898,20 +875,11 @@ img,
 }
 .map-caption a {
 	display: block;
-	//background: yellowgreen;
-    //background: url(images/icon-title.png) 50% 30% no-repeat;
-    //width: 5.0em;
-    //height: 3.5em;
     font-size: 1.6em;
     line-height: 3.5em;
     text-align: center;
     margin: auto;
     color: #fff;
-    //border-radius: 50%;
-    //color: #fff;
-    //font-weight: bold;
-    //opacity: 1;
-	//border: 1px solid red;
 }
 
 .top section {
@@ -944,7 +912,6 @@ img,
 	width: auto;
     text-align: left;
 	margin: 1em 0 0;
-	//border: none;
 }
 .top section.news article {
 	padding: 1em 0;
@@ -972,7 +939,6 @@ img,
     padding: 0;
     width: 100%;
     height: 400px;
-    //border: 1px solid red;
 }
 
 /* Page */
@@ -999,7 +965,6 @@ img,
     text-align: center;
     padding-top: 1.5em;
     font-size: 1.35em;
-    //color: #0a0a0a;
 }
 .about .second {
 	width: 1000px;
@@ -1019,7 +984,6 @@ img,
     line-height: 1.4em;
     text-align: center;
     border-bottom: 3px dotted #a7a7a7;
-    //border: 1px solid red;
 }
 .about article h1.entry-title + .fa {
     font-size: 3.2em;
@@ -1067,8 +1031,6 @@ img,
     background: #ccc;
     margin: 2em 0;
     width: 100%;
-    //height: 3em;
-    //border: 1px solid red;
 }
 .about section .tanba-change .fa {
     font-size: 1.2em;
@@ -1076,11 +1038,9 @@ img,
     margin: 0;
 }
 .about section div.beaf {
-	//border: 1px solid red;
     float: left;
     font-size: 1.2em;
     font-family: "Open Sans", sans-serif;
-    //border: 1px solid red;
     margin-right: 3%;
 }
 .about section .fa-angle-right {
@@ -1088,10 +1048,6 @@ img,
     margin: 2.8em 0.2em 0 0.3em;
     font-size: 2.3em;
 }
-.about p {
-	//margin: 0;
-}
-
 .about section img.aboutpic {
 	width: 32%;
     height: auto;
@@ -1101,7 +1057,6 @@ img,
 .about section > img.aboutpic:nth-of-type(3n),
 .about section div.beaf:nth-of-type(3) {
 	margin-right: 0;
-    //border: 1px solid red;
 }
 
 /* Member Single */
@@ -1114,14 +1069,11 @@ img,
 	margin-bottom: 1.5em;
 }
 .entry-member .head-icon {
-	//float: left;
-    //border: 1px solid red;
     vertical-align: bottom;
     margin-right: 0.7em;
     display: none;
 }
 .entry-member h2 { /* section */
-    //background: url(images/icon-title.png) no-repeat;
     display: inline-block;
     width: 100%;
     font-weight: normal;
@@ -1129,17 +1081,14 @@ img,
     padding: 0 0 2px;
     margin: 0;
     border-bottom: 2px solid #B6B57D;
-    //border: 1px solid red;
 }
 
 .entry-member > div:first-of-type {
 	width: 50%;
-    //height: 320px;
     float: left;
     margin: 0 1.3em 1.3em 0;
     padding: 0;
     overflow: hidden;
-	//border: 1px solid red;
 }
 .entry-member > div:first-of-type > img {
 	width: 100%;
@@ -1155,7 +1104,6 @@ img,
     font-size: 1.05em;
     line-height: 1.65em;
     float: left;
-    //border: 1px solid red;
 }
 .entry-member > p:after {
 	display: block;
@@ -1168,9 +1116,6 @@ img,
     clear: both;
 	width: 100%;
     margin: 0;
-    //margin-left:0;
-    //margin-top: 1em;
-	//border: 1px solid blue;
 }
 
 
@@ -1182,13 +1127,10 @@ img,
 	width: 31.333%;
     margin-right: 3%;
     margin-bottom: 3em;
-	//min-height: 400px; 
     float: left;
-    //border: 1px solid red;
 }
 .entry-blog article:nth-of-type(3n) {
 	margin-right: 0;
-    //border: 1px solid red;
 }
 .entry-blog article h3 {
 	font-weight: normal;
@@ -1200,7 +1142,6 @@ img,
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 100% auto;
-    //position: relative;
 }
 .entry-blog article .attach-wrap a {
 	display: block;
@@ -1212,9 +1153,6 @@ img,
 }
 .entry-blog article .wp-post-image {
 	width: 105%;
-    //position: absolute;
-    //top: 50%;
-    //left: 50%;
 }
 .entry-blog article p {
     line-height: 1.5em;
@@ -1225,7 +1163,6 @@ img,
 .pagination {
 	text-align: right;
     margin: 2em 0;
-    //border: 1px solid red;
 }
 
 .map-back {
@@ -1236,8 +1173,6 @@ img,
 .member .entry-content h3 {
 	margin: 0.2em 0;
 }
-
-
 
 
 /* Blog Single */
@@ -1269,12 +1204,10 @@ img,
 .list #primary {
 	width: 65%;
     float: left;
-    //border: 1px solid red;
 }
 .list #secondary {
 	width: 28%;
     float: right;
-    //border: 1px solid red;
 }
 
 .list #main {
@@ -1315,7 +1248,6 @@ img,
     padding: 0 0 3em 0;
     border-bottom: 1px dotted #ccc;
     margin-bottom: 3.5em;
-    //border-width: 2px 0;
 }
 .single .list article {
 	border: none;
@@ -1325,8 +1257,7 @@ img,
 	margin: 2em 0 1.5em;
 }
 .list article h3 { /* title on archive*/
-	//border-bottom: 2px solid #a3c4ce;
-    //margin: 2.5em 0 0;
+
 }
 .list article h4 {
 	margin: 0.5em 0 0;
@@ -1341,7 +1272,6 @@ img,
     overflow: hidden;
     float: left;
     margin-right: 3%;
-    //background: whitesmoke;
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 150% auto;
@@ -1379,7 +1309,6 @@ img,
 }
 .widget-area section {
 	margin: 1em 0 3em;
-    
 }
 h2.widget-title {
 	font-weight: normal;
@@ -1392,12 +1321,10 @@ h2.widget-title {
 	padding: 0;
     margin: 0;
     list-style: none;
-    //border: 1px solid green;
 }
 .widget-area li {
 	margin: 0 0 0.3em;
     padding: 0;
-    //border: 1px solid red;
 }
 .widget-area li:before {
 	content: "◼︎";
@@ -1408,7 +1335,6 @@ h2.widget-title {
 }
 .widget_calendar #next {
 	text-align: right;
-    //border: 1px solid red;
 }
 .widget_calendar tbody td a {
 	color: #06c;
@@ -1420,22 +1346,16 @@ h2.widget-title {
 }
 /* Colophon Footer*/
 #colophon {
-	//height: 250px;
     background: #11223A;
-    //margin-top: 4em;
 }
 .footnavi {
 	padding: 2.5em 0;
-    //padding-left: 0;
-    //height: 230px;
     background: url(images/tile-blue.png)/*#26385B*/;
-    //border: 1px solid red;
 }
 .footnavi > div {
 	width: 1000px;
     margin: auto;
     background: none;
-    //border: 1px solid red;
 }
 .footnavi > div ul {
 	padding: 0;
@@ -1446,7 +1366,6 @@ h2.widget-title {
 	padding-left: 0;
     margin-left: 0;
     margin-bottom: 0.1em;
-    //border: 1px solid red;
 }
 .site-info {
 	margin-top: 0;
@@ -1533,7 +1452,6 @@ h2.widget-title {
     height: auto;
     float: left;
     margin-right: 1em;
-    //margin-bottom: 2em;
     vertical-align: top;
 }
 .inspect .entry-content > p,
@@ -1541,7 +1459,6 @@ h2.widget-title {
 .contact .entry-content > p {
 	margin: 0 0 1em;
     padding: 0;
-    //border: 1px solid red;
 }
 .inspect .entry-content > p:after,
 .newshop .entry-content > p:after,
@@ -1571,7 +1488,6 @@ h2.form-title {
 	clear: both;
     float: none;
     margin-top: 2.5em;
-    //border: 1px solid orange;
 }
 .table-form  {
 	margin-top: 2em;
