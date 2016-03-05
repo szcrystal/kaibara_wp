@@ -7,7 +7,7 @@ index.php
 themes/
 !themes/_kbr
 !themes/_kbr/index.php
-!themes/_kbr/languages
+!themes/_kbr/languages/
 themes/_kbr/logs/
 
 plugins/
