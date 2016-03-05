@@ -1,11 +1,13 @@
 languages/
 upgrade/
 uploads/
-./index.php
+index.php
 .DS_Store
 
 themes/
 !themes/_kbr
+!themes/_kbr/index.php
+!themes/_kbr/languages
 themes/_kbr/logs/
 
 plugins/
