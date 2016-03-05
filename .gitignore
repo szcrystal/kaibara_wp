@@ -1,7 +1,7 @@
 languages/
 upgrade/
 uploads/
-index.php
+./index.php
 .DS_Store
 
 themes/
