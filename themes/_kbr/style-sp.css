@@ -1,0 +1,330 @@
+/* 
+for SP
+*/
+
+
+@import url('style.css');
+
+
+@media only screen and (max-width: 1000px) {
+	body {
+    	min-width: 100%;
+    }
+	.page #main,
+	.single #main,
+	.error404 #main,
+    .site-branding,
+    .main-navigation,
+    .top .wrap > div,
+    .map,
+    .about .yellow-back > div,
+    .about .second,
+    .footnavi > div,
+    .list .blog-main,
+    .list .entry-member {
+    	width: 100%;
+    }
+    .site-branding h2 {
+    	left: 0.2em;
+    }
+    .list .blog-main {
+    	padding-left: 1em;
+        padding-right: 1em;
+    }
+    .list .entry-member {
+    	width: auto;
+        margin: 0 1em 3em;
+    }
+    .main-navigation ul {
+    	width: 73%;
+    }
+
+    .top .entry-content {
+    	width: 90%;
+    }
+    .top .entry-content p {
+    	width: 100%;
+    }
+    .top .entry-content > .clear > div {
+    	width: 24.1%;
+        margin-right: 1%;
+        font-size: 1.0em;
+    }
+    .top .wrap > div {
+    	padding: 0 1em;
+    }
+    
+    .about .yellow-back {
+    	padding-left: 1em;
+        padding-right: 1em;
+    }
+    .about article h1.entry-title {
+    	width: 65%;
+    }
+    .about .entry-content {
+    	padding-left: 1em;
+        padding-right: 1em;
+    }
+    .about section > div {
+    	width: 85%;
+    }
+    .about section > div.clear {
+    	width: 95%;
+        margin: 0 auto 2em;
+    }
+    
+    .shop section {
+    	padding-left: 1em;
+        padding-right: 1em;
+    }
+    .inspect article,
+    .newshop article,
+    .contact article {
+		width: 100%;
+        padding: 0 1.0em;
+    }
+    
+}	
+
+@media only screen and (max-width: 800px) { /* iPad */
+	body {
+    	font-size: 13px;
+    }
+    .main-navigation ul {
+    	width: 80%;
+    }
+    .entry-blog article .attach-wrap a {
+    	height: 170px;
+    }
+}
+
+/* iPhone6+ LandScape/ 6 LandScape/ 5s LandScape(570px) */
+@media only screen and (max-width: 750px) {
+
+	.site-branding h2 {
+    	font-size: 0.8em;
+        margin-left: 0.3em;
+    }
+    /*
+	.main-navigation ul {
+    	width: 90%;
+        //border: 1px solid red;
+    }
+    .main-navigation li {
+    	margin-right: 5%;
+        margin-left: 5%
+    }
+    */
+	.site-content { /* #content */
+    	margin-top: 0;
+    }
+    .site-branding {
+        height: 450px;
+    }
+    .site-branding h1 {
+        margin-bottom: 0;
+    }
+    .site-branding .tgl {
+    	display: block;
+    	position: absolute;
+        right: 2%;
+        bottom: 2%;
+        font-size: 2.1em;
+        background: url(images/tile-blue.png)/*rgba(17,34,58,0.7)*//*#11223A*/;
+        text-align: center;
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        border-radius: 50%;
+    }
+    .site-branding .fa-bars {
+        color: #fff;
+        margin: 0;
+    }
+    .main-navigation {
+    	display: none;
+        padding: 1em 0;
+    }
+    .main-navigation ul {
+    	width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .main-navigation li {
+    	width: 50%;
+        margin: 0;
+        padding: 1em 1em 1em 1.8em;
+        font-size: 1em;
+    }
+    .main-navigation a {
+    	padding: 0;
+    }
+    
+    .top .site-content h1.entry-title {
+	    font-size: 1.6em;
+    }
+    .top .site-content h1.entry-title span {
+    	font-size: 0.8em;
+    }
+    .top .entry-content {
+    	width: 100%;
+    }
+    .top .entry-content > .clear > div {
+    	width: 49%;
+        margin: 0 2% 1em 0;
+    }
+    .top .entry-content > .clear > div:nth-of-type(2n) {
+    	margin-right: 0;
+    }
+    .top section {
+    	float: none;
+        width: 100%;
+    }
+    .top section:last-of-type {
+    	width: 100%;
+        margin: 2.5em 0 0;
+    }
+	.top section:last-of-type div img {
+    	width: 100%;
+    }
+    .top section:last-of-type div:last-of-type img {
+    	margin-bottom: 0;
+    }
+    
+    .about article h1.entry-title {
+    	width: 100%;
+    }
+    .about .entry-thumb {
+    	width: 100%;
+        float: none;
+    }
+    .about section .tanba-change {
+    	font-size: 1em;
+    }
+    .about section > div {
+    	width: 100%;
+        margin-bottom: 2em;
+    }
+    .about section > div.clear {
+    	margin-bottom: 2.5em;
+    }
+    .about section div.beaf {
+        margin: 0;
+        width: 45%;
+    }
+    .about section div.beaf:nth-of-type(2) {
+    	width: 10%;
+    } 
+    .about section .fa-angle-right {
+    	margin-top: 1.4em;
+    }
+    
+    .list #primary,
+    .list #secondary {
+        width: 100%;
+        float: none;
+    }
+    .list #secondary {
+        margin-top: 5em;
+    }
+    
+    /*Archive */
+    .list .archive-attach-wrap {
+    	width: 100%;
+        float: none;
+        margin: 0;
+    }
+    .list .archive-attach-wrap img {
+    	margin-top: -10%;
+    }
+    .list .archive-content-wrap {
+    	width: 100%;
+        float: none;
+        margin: 1em 0;
+    }
+    .list .blog-main .entry-content .archive-content-wrap p {
+    	min-height: 0;
+    }
+    
+    .list #primary,
+    .entry-member {
+    	margin-top: 1.5em;
+    }
+    .entry-member > div {
+    	float: none;
+        margin: 0;
+    }
+    .entry-member > div:first-of-type {
+    	width: 100%;
+    }
+    .entry-blog article {
+    	float: none;
+        width: 100%;
+        margin-bottom: 4em;
+    }
+    .entry-blog article h3 {
+    	min-height: 0;
+    }
+    .entry-blog article .attach-wrap a {
+    	height: 210px;
+    }
+    
+    .inspect .attachment-post-thumbnail,
+    .newshop .attachment-post-thumbnail,
+    .contact .attachment-post-thumbnail {
+		width: 42%;
+    }
+    .table-form th,
+    .table-form td {
+    	float: none;
+        display: block;
+    }
+    .table-form td {
+    	padding: 1.2em 0 1em 0;
+    }
+    select {
+    	font-size: 0.9em;
+    }
+    select.select_first_t,
+    select.select_second_t {
+        margin-left: 0;
+    }
+    .table-form td select + span {
+        margin-right: 0.2em;
+        font-size: 0.9em;
+    }
+/*	.table-form th em {*/
+/*    	float: left;*/
+/*        margin-left: 2em;*/
+/*    }*/
+	.footnavi > div ul {
+    	margin-left: 1.2em;
+    }
+    .footnavi > div ul li {
+    	margin-bottom: 0.8em;
+    }
+}
+
+@media only screen and (max-width: 500px) { /* Portlait: iPhone6+ /6/ 5s */
+
+	.site-branding h2 {
+    	font-size: 0.75em;
+    }
+
+}
+@media only screen and (max-width: 400px) { /* 6 */
+	
+}
+
+@media only screen and (max-width: 320px) { /* 5s */
+	body {
+    	font-size: 11px;
+    }
+    .site-branding h1 img {
+		width: 85%;
+    }
+
+}
+
+
+

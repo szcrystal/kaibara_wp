@@ -1,19 +1,15 @@
-languages
-upgrade
-uploads
+languages/
+upgrade/
+uploads/
 index.php
 .DS_Store
 
-themes/twentyfifteen
-themes/twentyfourteen
-themes/twentysixteen
-themes/index.php
-themes/kaibara
-themes/.DS_Store
+themes/
+!themes/_kbr
+!themes/_kbr/index.php
+!themes/_kbr/languages/
+themes/_kbr/logs/
 
-plugins/akismet
-plugins/hello.php
-plugins/index.php
-plugins/wp-multibyte-patch
-plugins/advanced-custom-fields
-plugins/.DS_Store
+plugins/
+!plugins/sz-form/
+
