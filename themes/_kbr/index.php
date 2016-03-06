@@ -5,7 +5,8 @@ Template Name: Top
 
 get_header(); 
 
-//if(isLocal()) echo __FILE__; 
+//if(isLocal()) echo __FILE__;
+//
 ?>
 
 	<div id="primary" class="content-area">
@@ -33,11 +34,9 @@ get_header();
 
                             <div class="entry-content">
                             	
-                                <?php
-                                    the_content(); ?>
+                                <?php the_content(); ?>
                                 
-                                    
-                                 <?php wp_link_pages( array(
+                                <?php wp_link_pages( array(
                                         'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_s' ),
                                         'after'  => '</div>',
                                     ) );
