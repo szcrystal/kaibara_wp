@@ -746,7 +746,7 @@ function setSinglePagenation() {
                         
                 if(isset($array[$key+1]))
                     $navFormat .= '<div class="nav-next"><a href="' . get_the_permalink($array[$key+1]->ID).'" rel="next">NEXT<i class="fa fa-angle-double-right"></i></a></div>';
-                }
+            }
         endforeach;
         	
         $navFormat .= "</div>\n"

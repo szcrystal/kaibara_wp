@@ -92,46 +92,30 @@ get_header(); ?>
 <?php get_sidebar(); ?>
 
 </div>
-      <?php if($shop_id) { ?>
-        
-    	<div class="entry-member clear">
-        	<header class="entry-header">
+      <?php if($shop_id) { 
+            //$shopID = get_post_meta($shop_id, 'shop_id', true);
+            wp_reset_query();
             
-            <?php
-            	//$shopID = get_post_meta($shop_id, 'shop_id', true);
-				wp_reset_query();
-                //global $post;
-                //$post = get_post($shopID, 'OBJECT', 'display');
-                $shop = new WP_Query(array(
-                                           'page_id'=>$shop_id,
-                                           'post_type'=>'shop',
-                                           'posts_per_page'=>-1));
-                
-                //global $post;
-                //$post = get_post($shop_id);
+            //global $post;
+            //$post = get_post($shopID, 'OBJECT', 'display');
+            $shop = new WP_Query(
+            	array(
+                   'page_id'=>$shop_id,
+                   'post_type'=>'shop',
+                   'posts_per_page'=>-1
+                )
+            );
+            
+            //global $post;
+            //$post = get_post($shop_id);
 
-            	 while ( $shop->have_posts() ) : 
-            		$shop->the_post(); 
-            ?>
-            <div class="clear">
-            	<img class="head-icon" src="<?php asset('images/icon-title.png'); ?>">
-            	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-            </div>
-        </header>
-    
-        <div>
-            <?php the_post_thumbnail(); ?>
-        </div>
-        	<?php the_content(); ?>
-            <?php //echo $post->post_content; ?>
-        
-        
-        <?php endwhile; ?>
-    </div>
-    
-    <?php } ?>
+             while ( $shop->have_posts() ) : 
+                $shop->the_post();
+                
+                get_template_part( 'template-parts/content', 'shop' );
+            endwhile;
+    	} ?>
 
 <?php
-
 get_footer();
 
