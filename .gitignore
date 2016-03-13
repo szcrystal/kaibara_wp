@@ -11,5 +11,5 @@ themes/
 themes/_kbr/logs/
 
 plugins/
-!plugins/sz-form/
+!plugins/sz-form
 
