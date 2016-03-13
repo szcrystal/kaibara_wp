@@ -12,29 +12,8 @@ get_header(); ?>
 		while ( have_posts() ) : the_post(); ?>
 
 			<section id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            	<div class="entry-member clear">
-                    <header class="entry-header">
-                        <?php
-
-                        if ( 'post' === get_post_type() ) : ?>
-                            <div class="entry-meta">
-                                <?php _s_posted_on(); ?>
-                            </div>
-                        <?php
-                        endif; ?>
-                        <div class="clear">
-                        	<!-- <img class="head-icon" src="<?php asset('images/icon-title.png'); ?>"> -->
-                        	<h2><?php the_title(); ?></h2>
-                        </div>
-                    </header>
-                
-                	<div>
-                    	<?php the_post_thumbnail(); ?>
-                    </div>
-                    
-                    <?php the_content(); ?>
-					
-                </div>
+            	
+                <?php get_template_part( 'template-parts/content', 'shop'); ?>
 
 				<?php 
                 	$thisID = get_the_id();

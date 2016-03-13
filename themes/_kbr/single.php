@@ -38,43 +38,31 @@ get_header(); ?>
     <?php get_sidebar(); ?>
 
 </div>
-        
-    <div class="entry-member clear">
-        <header class="entry-header">
-            <?php
-            	$shopID = get_post_meta(get_the_id(), 'shop_id', true);
-				//echo $shopID;
-                wp_reset_query();
-                //wp_reset_postdata();
-                
-                //global $post;
-                //$post = get_post($shopID);
-                $shop = new WP_Query(array(
-                                           'page_id'=>$shopID,
-                                           'post_type'=>'shop',
-                                           'posts_per_page'=>-1));
-                
-            ?>
 
-            <?php
-            	 while ( $shop->have_posts() ) :
-            		$shop->the_post();
-            ?>
-            <div class="clear">
-            	<img class="head-icon" src="<?php asset('images/icon-title.png'); ?>">
-            	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-            </div>
-        </header>
-    
-        <div>
-            <?php the_post_thumbnail(); ?>
-        </div>
-            <?php the_content(); ?>
-            <?php //echo $post->post_content; ?>
-
+    <?php
+        wp_reset_query(); //get_the_ID()前に一旦リセットしないとID取得が出来ない sidebarがあるため
+                    
+        $shopID = get_post_meta(get_the_ID(), 'shop_id', true);
         
-        <?php endwhile; ?>
-    </div>
+        //wp_reset_postdata();                
+        
+        //global $post;
+        //$post = get_post($shopID);
+        $shop = new WP_Query(
+        	array(
+               'page_id'=>$shopID,
+               'post_type'=>'shop',
+               'posts_per_page'=>-1
+            )
+        );
+        
+
+        while ( $shop->have_posts() ) :
+            $shop->the_post();
+            
+            get_template_part( 'template-parts/content', 'shop' );
+        endwhile;
+    ?>
 
 <?php
 

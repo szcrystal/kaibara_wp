@@ -58,7 +58,7 @@ for SP
     	padding-left: 1em;
         padding-right: 1em;
     }
-    .about article h1.entry-title {
+    .about article .entry-header h1.entry-title {
     	width: 65%;
     }
     .about .entry-content {
@@ -191,7 +191,7 @@ for SP
     	margin-bottom: 0;
     }
     
-    .about article h1.entry-title {
+    .about article .entry-header h1.entry-title {
     	width: 100%;
     }
     .about .entry-thumb {

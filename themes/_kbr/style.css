@@ -762,6 +762,9 @@ img,
 .contact #main {
 	min-height: 700px;
 }
+.fixpage #main {
+	min-height: 700px;
+}
 .top #main {
     margin: 0 auto;
     width: auto;
@@ -942,6 +945,10 @@ img,
 }
 
 /* Page */
+.fixpage article .entry-header h1 {
+	border-bottom: 2px solid #B6B57D;
+    font-size: 1.7em; 
+}
 
 /* about */
 .about #main {
@@ -975,7 +982,7 @@ img,
 	text-align: center;
     margin-bottom: 1em;
 }
-.about article h1.entry-title {
+.about article .entry-header h1.entry-title {
 	width: 50%;
     margin: 0 auto;
     padding: 0 0 0.5em;
@@ -1058,6 +1065,7 @@ img,
 .about section div.beaf:nth-of-type(3) {
 	margin-right: 0;
 }
+
 
 /* Member Single */
 .entry-member {
@@ -1436,14 +1444,14 @@ h2.widget-title {
 	width: 80%;
     margin: auto;
 }
-.inspect article h1,
-.newshop article h1,
-.contact article h1 {
+.inspect article .entry-header h1,
+.newshop article .entry-header h1,
+.contact article .entry-header h1 {
 	font-weight: normal;
     font-size: 1.4em;
     margin-top: 1em;
     padding-bottom: 0.3em;
-	border-bottom: 2px solid #B6B57D/*#a3c4ce*/;
+	/*border-bottom: 2px solid #B6B57D;*//*#a3c4ce*/
 }
 .inspect .attachment-post-thumbnail,
 .newshop .attachment-post-thumbnail,

@@ -102,7 +102,7 @@ class RecentPostWidget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'custom_recent_posts', // Base ID
-			'最近のブログ For KBR', // Name
+			'最近のブログ 柏原', // Name
 			array( // Args
             	'description' => '最近のブログを店舗別に表示します。',
             )
@@ -204,10 +204,96 @@ class RecentPostWidget extends WP_Widget {
 } // class END
 
 
+//最近の投稿
+class shopLinkAndArchive extends WP_Widget {
+
+	/* WordPress でウィジェットを登録 */
+	function __construct() {
+		parent::__construct(
+			'shop_link_archive', // Base ID
+			'ニュース一覧と店舗リンク', // Name
+			array( // Args
+            	'description' => 'ニュース一覧と店舗ページのリンクを表示します。',
+            )
+		);        
+	}
+
+	/**
+	 * ウィジェットのフロントエンド表示
+	 * @see WP_Widget::widget()
+	 * @param array $args     ウィジェットの引数
+	 * @param array $instance データベースの保存値
+	 */
+	public function widget( $args, $instance ) {
+		echo $args['before_widget']; //<section>
+		
+        echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+
+        //メイン部分 ----------
+        $linkFormat = '<li><a href="%s">%s</a></li>'."\n";
+        
+        $queryArray = array(
+            'post_type' => 'shop',
+            //'posts_per_page' => $this->listCount,
+            'orderby'=>'date ID',
+            'order'=>'ASC',
+        );
+        
+        echo '<ul id="menu-side-menu" class="menu">'. "\n";
+        
+        printf($linkFormat, home_url('news'), 'ニュース一覧');
+        printf($linkFormat, home_url('shop'), '加盟店舗一覧');
+        
+        $objs = new WP_Query($queryArray);
+        
+        while($objs->have_posts()) {
+            $objs->the_post();
+            printf($linkFormat, get_permalink(), get_the_title()); 
+        }
+        
+        echo "</ul>\n";
+        //メインEND ---------
+        
+		echo $args['after_widget'];
+	}
+
+	/**
+	 * バックエンドのウィジェットフォーム
+	 * @see WP_Widget::form()
+	 * @param array $instance データベースからの前回保存された値
+	 */
+	public function form( $instance ) {
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'ニュース一覧と店舗リンク', 'text_domain' );
+		?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'タイトル:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		<?php 
+	}
+
+	/**
+	 * ウィジェットフォームの値を保存用にサニタイズ
+	 * @see WP_Widget::update()
+	 * @param array $new_instance 保存用に送信された値
+	 * @param array $old_instance データベースからの以前保存された値
+	 * @return array 保存される更新された安全な値
+	 */
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+
+		return $instance;
+	}
+
+} // class END
+
+
 // Widget ウィジェットを登録
 function register_custom_widget() {
     register_widget( 'AllBlogByShopWidget' );
     register_widget( 'RecentPostWidget' );
+    register_widget( 'shopLinkAndArchive' );
     
     unregister_widget("WP_Widget_Recent_Posts"); //Parameters http://codex.wordpress.org/Function_Reference/unregister_widget
 }
