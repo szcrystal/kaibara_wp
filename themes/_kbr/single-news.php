@@ -13,7 +13,9 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			
+        
+<?php if(isLocal()) echo __FILE__; ?>			
+    
     <?php
         //$shid = get_post_meta(get_the_ID(), 'shop_id', true);
         
