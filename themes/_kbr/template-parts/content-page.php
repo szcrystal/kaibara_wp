@@ -6,13 +6,12 @@
  *
  */
 
-?>
-<?php 
 
 if(get_page_slug(get_the_ID()) == 'about') { //Aboutページ
 
     remove_filter('the_content', 'wpautop'); // !注意! Aboutページのみautopを消す
 ?>
+
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     	<div class="yellow-back">
         <div class="clear">
