@@ -10,8 +10,6 @@
 ?>
 
 <section class="no-results not-found">
-	
-
 	<div class="page-content">
 		<?php
 		if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
@@ -35,5 +33,6 @@
 				//get_search_form();
 
 		endif; ?>
+        
 	</div><!-- .page-content -->
 </section>
