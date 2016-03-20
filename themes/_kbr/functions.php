@@ -767,7 +767,7 @@ function isNameAdmin() {
 	return ($current_user->user_login == 'admin');
 }
 
-//localServer judge
+//localServer judge -> Main:10.17 Second:10.15
 function isLocal() {
     return ($_SERVER['SERVER_NAME'] == '192.168.10.17' || $_SERVER['SERVER_NAME'] == '192.168.10.15' || $_SERVER['SERVER_NAME'] == 'localhost');
 }
