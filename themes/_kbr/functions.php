@@ -769,7 +769,7 @@ function isNameAdmin() {
 
 //localServer judge
 function isLocal() {
-    return ($_SERVER['SERVER_NAME'] == '192.168.10.17' || $_SERVER['SERVER_NAME'] == 'localhost');
+    return ($_SERVER['SERVER_NAME'] == '192.168.10.17' || $_SERVER['SERVER_NAME'] == '192.168.10.15' || $_SERVER['SERVER_NAME'] == 'localhost');
 }
 
 function session_clear_onpage() {
