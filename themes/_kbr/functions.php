@@ -759,7 +759,7 @@ function setSinglePagenation() {
 }
 
 
-
+/* Session, judge ,etc... ********************** */
 
 //Admin Login
 function isNameAdmin() {
