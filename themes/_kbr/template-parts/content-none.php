@@ -34,5 +34,5 @@
 
 		endif; ?>
         
-	</div><!-- .page-content -->
+	</div>
 </section>
