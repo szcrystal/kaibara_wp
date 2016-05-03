@@ -2,20 +2,20 @@
 
 var szcExec = (function() {
     
-    return {
+	return {
     
         opts: {
             crtClass: 'current',
             btnID: '.top_btn',
             all: 'html, body',
         },
-        
+
         addCurrent: function() {
             var url = window.location;
             $('.main-navigation a[href="'+url+'"]').addClass(this.opts.crtClass);
         },
-        
-        
+
+
         scrollFunc: function() {
             var t = this,
                 tb = $(t.opts.btnID);

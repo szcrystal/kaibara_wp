@@ -541,6 +541,7 @@ function isComment() {
 	return get_option('default_comment_status') == 'open';
 }
 
+
 /* Custom Excerpt */
 function sz_content($char_count) {
 
@@ -769,7 +770,7 @@ function isNameAdmin() {
 
 //localServer judge -> Main:10.17 Second:10.15
 function isLocal() {
-    return ($_SERVER['SERVER_NAME'] == '192.168.10.17' || $_SERVER['SERVER_NAME'] == '192.168.10.15' || $_SERVER['SERVER_NAME'] == 'localhost');
+    return ($_SERVER['SERVER_NAME'] == 'kbr.seven.dev' || strpos($_SERVER['SERVER_NAME'], '192.168.10') !== false);
 }
 
 function session_clear_onpage() {
@@ -847,7 +848,7 @@ function getLog() {
     
     $date = strftime('%Y%m%d');
     $logPath = realpath(dirname(__FILE__)) . '/logs';
-    $fileName = "$logPath/kbr.log";
+    $fileName = "{$logPath}/kbr.log";
     
     $accessTime = strftime('%c');
     //$accessTime = date('Y年m月d日 H時i分s秒', time());

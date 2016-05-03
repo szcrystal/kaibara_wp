@@ -14,10 +14,9 @@
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
 <?php wp_head(); ?>
-<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/jq.script.js"></script>
 </head>
-
 <body <?php body_class(); ?>>
 <div id="page" <?php addMainClass(); ?>>
 
